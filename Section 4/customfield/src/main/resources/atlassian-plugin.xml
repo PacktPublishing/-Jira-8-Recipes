@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="customfield"/>  
+  <!-- add our web resources -->  
+  <web-resource key="customfield-resources" name="customfield Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="customfield.css" location="/css/customfield.css"/>  
+    <resource type="download" name="customfield.js" location="/js/customfield.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>customfield</context> 
+  </web-resource>  
+  <customfield-type name="Demo Custom Field" i18n-name-key="demo-custom-field.name" key="demo-custom-field" class="com.consulseer.demo.DemoCustomField"> 
+    <description key="demo-custom-field.description">The Demo Custom Field Plugin</description>  
+    <resource name="view" type="velocity" location="/templates/plugins/fields/view/view-basictext.vm"/>  
+    <resource name="edit" type="velocity" location="/templates/customfields/demo-custom-field/edit.vm"/> 
+  </customfield-type>
+</atlassian-plugin>
