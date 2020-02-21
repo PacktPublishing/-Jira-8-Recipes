@@ -1,0 +1,4 @@
+<messagebundle>
+	<msg name="my-gadget.name">My Demo Gadget - IN UK</msg>
+	<msg name="my-gadget.description">An Example of JIRA gadget programming - IN UK</msg>
+</messagebundle>

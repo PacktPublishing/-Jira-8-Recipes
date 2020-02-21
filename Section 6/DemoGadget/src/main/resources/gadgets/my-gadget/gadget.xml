@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="__MSG_my-gadget.name__"
+                 directory_title="__MSG_my-gadget.name__"
+                 description="__MSG_my-gadget.description__"
+                 thumbnail='#staticResourceUrl("com.consulseer.com.DemoGadget:my-gadget", "thumbnail.png")'
+                 >
+        <Optional feature="gadget-directory">
+            <Param name="categories">
+                JIRA
+            </Param>
+        </Optional>
+        <Require feature="setprefs"/>
+		<Require feature="dynamic-height"/>
+		<Require feature="oauthpopup" />
+		<Require feature="views" />
+        #supportedLocales("gadget.common")
+		<Locale messages="__ATLASSIAN_BASE_URL__/download/resources/com.consulseer.com.DemoGadget/i18n/ALL_ALL.xml"/>
+
+		<Locale lang="en" country="UK" messages="__ATLASSIAN_BASE_URL__/download/resources/com.consulseer.com.DemoGadget/i18n/en_UK.xml"/>
+
+
+    </ModulePrefs>
+    <UserPref name="isConfigured" datatype="hidden" default_value="false"/>
+	<UserPref name="refresh" datatype="hidden" default_value="false"/>
+	<UserPref name="projectOrFilterId" datatype="hidden" />
+    <Content type="html" view="profile">
+        <![CDATA[
+            #requireResource("com.atlassian.jira.gadgets:common")
+			#includeResources()
+			
+			<script type="text/javascript">
+				function projectID(projectOrFilterId){
+				
+					var projectFilterID = projectOrFilterId.substring(8,projectOrFilterId.length);
+				
+					return Number(projectFilterID);
+				}
+				
+				(function () {
+					var gadget = AJS.Gadget({
+						baseUrl: "__ATLASSIAN_BASE_URL__",
+						useOauth: "/rest/gadget/1.0/currentUser",
+						config: {
+							descriptor: function (args) {
+								var gadget = this;
+								var searchParam = AJS.gadget.fields.projectOrFilterPicker(gadget,"projectOrFilterId");
+								
+								return {
+									fields: [
+										searchParam,
+										AJS.gadget.fields.nowConfigured()
+									]
+								};
+							},
+							args: function(){
+							}()
+						},
+						view: {
+							enableReload: true,
+							onResizeAdjustHeight: true,
+							template: function(args) {
+								var gadget = this;
+								var projectName = args.project.categories[0].projects[0].name;
+								var leaduserName = args.project.categories[0].projects[0].leadFullName;
+								
+								var projectDetails = AJS.$("<h1/>").text("Project Name: "+projectName+"Project Lead: "+leaduserName);
+								
+								gadget.getView().html(projectDetails);								
+							},
+							args: [{
+								key: "project",
+								ajaxOptions: function() {
+									return {
+										url: "/rest/gadget/1.0/project/generate",
+										data:  {
+											projectsOrCategories: projectID(this.getPref("projectOrFilterId"))
+										}
+									};
+								}							
+							}]
+						}
+					});
+				}) ();
+			</script>
+        ]]>
+    </Content>
+</Module>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

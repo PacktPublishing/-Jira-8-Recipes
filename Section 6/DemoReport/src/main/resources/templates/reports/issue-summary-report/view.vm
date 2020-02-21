@@ -1,0 +1,20 @@
+<div style="padding: 5px">
+	<h4 id="issue-summary-report-parameters">
+        $i18n.getText('report.issuesummary.project'): $projectName
+    </h4>
+	<br/>
+	<table style="width: 100%; text-align: left; border: 0; background-color: lightgrey">
+		<tr valign="bottom" style="background-color: white; padding: 1px">
+			<th>Number of Issues in Project</th>
+			<th> $issueCount </th>
+		</tr>
+		<tr>
+			<td>Unassigned</td>
+			<td> $unassignedissueCount </td>
+		</tr>
+		<tr>
+			<td>Assigned</td>
+			<td> $assignedissueCount </td>
+		</tr>
+	</table>
+</div>
