@@ -31,7 +31,7 @@ For an optimal experience with hands-on labs and other practical activities, we 
 ●	Memory: 12GB
 ●	Storage: 100GB
 
-### Software Requirements: </br>
+### Software Requirements </br>
 ●	Operating system: Windows 10, Linux, Mac </br>
 ●	Browser: Firefox, Chrome </br>
 ●	Atom IDE, Eclipse </br>
