@@ -1,8 +1,3 @@
-## $5 Tech Unlocked 2021!
-[Buy and download this Video for only $5 on PacktPub.com](https://www.packtpub.com/product/jira-8-recipes-video/9781838980122)
------
-*The $5 campaign         runs from __December 15th 2020__ to __January 13th 2021.__*
-
 # -Jira-8-Recipes
  Jira 8 Recipes, published by Packt
 # Jira 8 Recipes [Video]
